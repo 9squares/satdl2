@@ -4,6 +4,12 @@ describe "User pages" do
 
   subject { page }
 
+  describe "index page" do
+  	before { visit users_path }
+
+  	it { should have_content('All users') }
+  end
+
   describe "profile page" do
   	let(:user) { FactoryGirl.create(:user) }
   	before { visit user_path(user) }
