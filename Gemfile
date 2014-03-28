@@ -3,8 +3,8 @@ ruby '2.1.1'
 
 gem 'rails', '4.0.4'
 gem 'bootstrap-sass', '2.3.2.0'
-gem 'sprockets', '2.11.0'
-gem 'bcrypt-ruby', '3.1.2'
+gem 'sprockets'
+gem 'bcrypt-ruby'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
@@ -24,7 +24,6 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.0'
   gem 'cucumber-rails', '1.4.0', :require => false
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   # Uncomment this line on OS X.
   gem 'growl', '1.0.3'
