@@ -1,3 +1,4 @@
 class Task < ActiveRecord::Base
-	validates :user_id, presence: true
+	belongs_to :user
+	validates :title, :user_id, presence: true
 end
