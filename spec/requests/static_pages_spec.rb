@@ -1,20 +1,16 @@
 require 'spec_helper'
 
 describe "Static pages" do
-
+subject { page }
   describe "Home page" do
+  	before { visit root_path }
 
-    it "should have the content a home page mark" do
-      visit '/static_pages/home'
-      expect(page).to have_content('This will be out home page.')
-    end
+    it { should have_content('This will be our home page.') }
   end
 
   describe "About page" do
+  	before { visit about_path }
 
-    it "should have the content 'We are The Company'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('We are The Company')
-    end
+    it { should have_content('We are The Company') }
   end  
 end
