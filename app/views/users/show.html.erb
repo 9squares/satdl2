@@ -1,7 +1,7 @@
-<h1>Profile page</h1>
-
-<p><%= @user.name %>, <%= @user.email %></p>
-
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
 <h2>Tasks:</h2>
 <% @user.tasks.each do |task| %>
   <p>
