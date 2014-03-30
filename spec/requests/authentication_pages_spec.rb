@@ -10,9 +10,10 @@ describe "AuthenticationPages" do
   	it { should have_content('Sign in') }
 
   	describe "with invalid information" do
-  		before { click_button "Sign in" }
+  		before { click_button "Sign In" }
 
-  		it { should have_selector('div.alert.alert-error') }
+  		it { should have_error_message('Invalid') }
+      it { should have_title('Sign in') }
 
   		describe "after visiting another page" do
   			before { click_link "Home" }
@@ -25,16 +26,16 @@ describe "AuthenticationPages" do
   		before do
   			fill_in "Email",    with: user.email.upcase
   			fill_in "Password", with: user.password
-  			click_button "Sign in"
+  			click_button "Sign In"
   		end
 
   		it { should have_link('Profile',     href: user_path(user)) }
   		it { should have_link('Sign out',    href: signout_path) }
-  		it { should_not have_link('Sign in', href: signin_path) }
+  		it { should_not have_link('Sign In', href: signin_path) }
 
       describe "followed by signout" do
         before { click_link "Sign out" }
-        it { should have_link('Sign in') }
+        it { should have_link('Sign In') }
       end
   	end
   end
