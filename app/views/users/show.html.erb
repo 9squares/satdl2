@@ -14,6 +14,14 @@
     <div class = 'container'>
       <div class = 'row'>
         
+        <div class = "col-sm-5">
+          <h2>Tasks:</h2>
+          <% @user.tasks.each do |task| %>
+          <%= task.title %>
+          <%= link_to 'Destroy Task', [task.user, task],method: :delete, class: "btn btn-danger btn-xs pull-right" %></p>
+          <% end %>
+        </div>
+
         <div class = "col-sm-3">
           <h2>Add a task:</h2>
           <div>
@@ -27,14 +35,6 @@
             </p>
           </div>
           <% end %>
-        </div>
-
-        <div class = "col-sm-5">
-          <h2>Tasks:</h2>
-          <% @user.tasks.each do |task| %>
-          <%= task.title %>
-          <%= link_to 'Destroy Task', [task.user, task],method: :delete, class: "btn btn-danger btn-xs pull-right" %></p>
-        <% end %>
         </div>
       </div>
     </div>
