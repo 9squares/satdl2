@@ -15,6 +15,7 @@ describe "User pages" do
   	before { visit user_path(user) }
 
   	it { should have_content(user.name) }
+    it { should have_title(user.name) }
   end
 
   describe "signup page" do
@@ -33,7 +34,7 @@ describe "User pages" do
         fill_in "Name",                  with: "Example User"
         fill_in "Email",                 with: "user@example.com"
         fill_in "Password",              with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Password confirmation", with: "foobar"
       end
 
       it "should create a user" do
