@@ -7,7 +7,7 @@ describe "User pages" do
   describe "index page" do
   	before { visit users_path }
 
-  	it { should have_content('All users') }
+  	it { should have_title('All users') }
   end
 
   describe "profile page" do
@@ -22,6 +22,10 @@ describe "User pages" do
     before { visit signup_path }
 
     let(:submit) { "Create my account" }
+
+    it { should have_title('Sign up') }
+    it { should have_button('Create my account') }
+    it { should have_field('Password confirmation') }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -51,4 +55,21 @@ describe "User pages" do
       end
     end
   end 
+
+  describe "edit page" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit edit_user_path(user) }
+
+    describe "page" do
+      it { should have_content("Update your profile") }
+      it { should have_title("Edit user") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+
+      it { should have_content('error') }
+    end
+  end
 end
