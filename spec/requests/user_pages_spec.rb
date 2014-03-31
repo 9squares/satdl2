@@ -7,7 +7,7 @@ describe "User pages" do
   describe "index page" do
   	before { visit users_path }
 
-  	it { should have_content('All users') }
+  	it { should have_title('All users') }
   end
 
   describe "profile page" do
@@ -22,6 +22,10 @@ describe "User pages" do
     before { visit signup_path }
 
     let(:submit) { "Create my account" }
+
+    it { should have_title('Sign up') }
+    it { should have_button('Create my account') }
+    it { should have_field('Password confirmation') }
 
     describe "with invalid information" do
       it "should not create a user" do
