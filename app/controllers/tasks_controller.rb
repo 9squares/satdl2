@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-    before_action :signed_in_user, only: [:create, :destroy]
-    before_action :correct_user,   only: :destroy
+    before_action :signed_in_user, only: [:create, :destroy, :edit, :update, :flop]
+    before_action :correct_user,   only: [:destroy, :edit, :update, :flop] 
 
 	def create
     	@user = User.find(params[:user_id])
@@ -14,6 +14,14 @@ class TasksController < ApplicationController
     	@task.destroy
     	redirect_to user_path(@user)
   	end
+
+    def flop
+        @user = User.find(params[:user_id])
+        @task = @user.tasks.find(params[:id])
+        @task.done = false # flop the status
+        @task.save
+        redirect_to user_path(@user)
+    end
 
     private
         def correct_user

@@ -1,6 +1,10 @@
 Satdl2::Application.routes.draw do
   resources :users do
-    resources :tasks
+    resources :tasks do
+      member do
+        get :flop
+      end
+    end
   end
   resources :sessions, only: [:new, :create, :destroy]
 
